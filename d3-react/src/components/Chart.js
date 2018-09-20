@@ -7,9 +7,7 @@ export default class Chart extends Component {
 
     componentDidMount() {
         const el = document.getElementById("norge");
-        const $ = sel => document.querySelector(sel);
-        const randomize = (arr) => arr.sort(() => .5 - Math.random());
-        const first = (arr) => arr[0];
+
         const debounce = function(fn, wait = 10) {
             let timeout;
             return function() {
@@ -30,37 +28,16 @@ export default class Chart extends Component {
         norway.on('load', () => {
             const areas = norway.areas();
 
-            let questions = randomize(areas);
-            let expected = ask(questions);
-            let corrects = 0;
 
             norway.on('selected', area => {
-                const correct = (area.id === expected.id);
-                norway.addClass(area, correct ? 'correct' : 'fail');
-                corrects += correct ? 1 : 0;
 
-                if (questions.length == 0) {
-                    if (done) {
-                        return
-                    }
-                    done = true;
-
-                    const winner = (corrects === areas.length);
-                    alert(winner ? "You won!" : "You got " + corrects + " of " + areas.length);
-                }
-                else {
-                    questions = questions.slice(1);
-                    expected = ask(questions);
-                }
             });
         });
-        const areaEl = document.getElementById("valgt");
 
-        function ask(questions) {
-            const expected = first(questions);
-            areaEl.innerText = `Velg ${expected.name}`;
-            return expected;
-        }
+        const areaEl = document.getElementById("valg");
+
+        //document.getElementById("area-16").setAttribute("fill", "white");
+
     }
 
     render() {
