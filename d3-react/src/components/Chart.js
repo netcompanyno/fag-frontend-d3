@@ -5,6 +5,14 @@ import d3 from 'd3';
 
 export default class Chart extends Component {
 
+    constructor() {
+        super();
+
+        this.state = {
+            valgt: ""
+        }
+    }
+
   componentDidMount() {
     const el = document.getElementById("norge");
 
@@ -31,7 +39,7 @@ export default class Chart extends Component {
       }
 
       norway.on('selected', area => {
-
+        this.setState({valgt: area.name});
       });
     });
 
@@ -49,7 +57,7 @@ export default class Chart extends Component {
   render() {
     return (
       <div>
-        <p id={"valgt"}></p>
+        <p id={"valgt"}>{this.state.valgt}</p>
         <div id={"norge"}/>
         <svg className={"d3-svg"} width="300px" height="150px">
           <rect x="70" y="20" width="20px" height="20" rx="5" ry="5"/>
