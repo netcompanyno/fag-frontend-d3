@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="weatherdata" type="weatherdataType"/>
+  <xs:complexType name="temperatureType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="unit" use="optional"/>
+        <xs:attribute type="xs:string" name="value" use="optional"/>
+        <xs:attribute type="xs:string" name="time" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="locationType" mixed="true">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name" minOccurs="0"/>
+      <xs:element type="xs:string" name="type" minOccurs="0"/>
+      <xs:element type="xs:string" name="country" minOccurs="0"/>
+      <xs:element type="timezoneType" name="timezone" minOccurs="0"/>
+      <xs:element type="locationType" name="location" minOccurs="0"/>
+      <xs:element type="timeType" name="time" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="altitude" use="optional"/>
+    <xs:attribute type="xs:string" name="latitude" use="optional"/>
+    <xs:attribute type="xs:string" name="longitude" use="optional"/>
+    <xs:attribute type="xs:string" name="geobase" use="optional"/>
+    <xs:attribute type="xs:string" name="geobaseid" use="optional"/>
+    <xs:attribute type="xs:string" name="name" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="linksType">
+    <xs:sequence>
+      <xs:element type="linkType" name="link" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timeType">
+    <xs:sequence>
+      <xs:element name="title" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="sundag"/>
+            <xs:enumeration value="måndag"/>
+            <xs:enumeration value="tysdag"/>
+            <xs:enumeration value="onsdag"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="body" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="&lt;strong>Østlandet og Telemark:&lt;/strong> Sør og sørøst frisk bris, på kysten perioder med liten kuling. Perioder med regn i vestlige og nordlige områder, ellers oppholdsvær. Stedvis mye nedbør nord i Oppland i sent ettermiddag og kveld. En del sol i sør og øst. Lokal tåke eller lave tåkeskyer."/>
+            <xs:enumeration value="&lt;strong>Østlandet:&lt;/strong> Sør og sørvest bris. Skyet eller delvis skyet. Perioder med regn. Lokal tåke. I vest og nord dreier vinden på vest og nordvest utover dagen og lettere vær."/>
+            <xs:enumeration value="&lt;strong>Østlandet og Telemark:&lt;/strong> Skiftende bris, senere austlig bris, om kvelden dreiende sørlig. Regn tidlig på dagen, senere oppholdsvær og perioder med sol. Utover ettermiddagen tilskyende og litt regn fra sørvest."/>
+            <xs:enumeration value="&lt;strong>Østlandet og Telemark:&lt;/strong> Sørlig bris, utpå dagen dreiende sørvestlig, liten kuling i Ytre Oslofjord. For det meste skyet og litt regn. Lokal tåke. Om ettermiddagen etter hvert stort sett opphold og mulighet for noe sol i vest"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="symbolType" name="symbol" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valid from 2018-10-14T17:00:00 to 2018-10-14T18:00:00  Valid from 2018-10-14T18:00:00 to 2018-10-15T00:00:00  Valid from 2018-10-15T00:00:00 to 2018-10-15T06:00:00  Valid from 2018-10-15T06:00:00 to 2018-10-15T12:00:00  Valid from 2018-10-15T12:00:00 to 2018-10-15T18:00:00  Valid from 2018-10-15T18:00:00 to 2018-10-16T00:00:00  Valid from 2018-10-16T00:00:00 to 2018-10-16T06:00:00  Valid from 2018-10-16T06:00:00 to 2018-10-16T12:00:00  Valid from 2018-10-16T12:00:00 to 2018-10-16T18:00:00  Valid from 2018-10-16T18:00:00 to 2018-10-17T00:00:00  Valid from 2018-10-17T02:00:00 to 2018-10-17T08:00:00  Valid from 2018-10-17T08:00:00 to 2018-10-17T14:00:00  Valid from 2018-10-17T14:00:00 to 2018-10-17T20:00:00  Valid from 2018-10-17T20:00:00 to 2018-10-18T02:00:00  Valid from 2018-10-18T02:00:00 to 2018-10-18T08:00:00  Valid from 2018-10-18T08:00:00 to 2018-10-18T14:00:00  Valid from 2018-10-18T14:00:00 to 2018-10-18T20:00:00  Valid from 2018-10-18T20:00:00 to 2018-10-19T02:00:00  Valid from 2018-10-19T02:00:00 to 2018-10-19T08:00:00  Valid from 2018-10-19T08:00:00 to 2018-10-19T14:00:00  Valid from 2018-10-19T14:00:00 to 2018-10-19T20:00:00  Valid from 2018-10-19T20:00:00 to 2018-10-20T02:00:00  Valid from 2018-10-20T02:00:00 to 2018-10-20T08:00:00  Valid from 2018-10-20T08:00:00 to 2018-10-20T14:00:00  Valid from 2018-10-20T14:00:00 to 2018-10-20T20:00:00  Valid from 2018-10-20T20:00:00 to 2018-10-21T02:00:00  Valid from 2018-10-21T02:00:00 to 2018-10-21T08:00:00  Valid from 2018-10-21T08:00:00 to 2018-10-21T14:00:00  Valid from 2018-10-21T14:00:00 to 2018-10-21T20:00:00  Valid from 2018-10-21T20:00:00 to 2018-10-22T02:00:00  Valid from 2018-10-22T02:00:00 to 2018-10-22T08:00:00  Valid from 2018-10-22T08:00:00 to 2018-10-22T14:00:00  Valid from 2018-10-22T14:00:00 to 2018-10-22T20:00:00  Valid from 2018-10-22T20:00:00 to 2018-10-23T02:00:00  Valid from 2018-10-23T02:00:00 to 2018-10-23T08:00:00  Valid from 2018-10-23T08:00:00 to 2018-10-23T14:00:00  Valid from 2018-10-23T14:00:00 to 2018-10-23T20:00:00</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="precipitationType" name="precipitation" minOccurs="0"/>
+      <xs:element type="windDirectionType" name="windDirection" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valid at 2018-10-14T17:00:00  Valid at 2018-10-14T18:00:00  Valid at 2018-10-15T00:00:00  Valid at 2018-10-15T06:00:00  Valid at 2018-10-15T12:00:00  Valid at 2018-10-15T18:00:00  Valid at 2018-10-16T00:00:00  Valid at 2018-10-16T06:00:00  Valid at 2018-10-16T12:00:00  Valid at 2018-10-16T18:00:00  Valid at 2018-10-17T02:00:00  Valid at 2018-10-17T08:00:00  Valid at 2018-10-17T14:00:00  Valid at 2018-10-17T20:00:00  Valid at 2018-10-18T02:00:00  Valid at 2018-10-18T08:00:00  Valid at 2018-10-18T14:00:00  Valid at 2018-10-18T20:00:00  Valid at 2018-10-19T02:00:00  Valid at 2018-10-19T08:00:00  Valid at 2018-10-19T14:00:00  Valid at 2018-10-19T20:00:00  Valid at 2018-10-20T02:00:00  Valid at 2018-10-20T08:00:00  Valid at 2018-10-20T14:00:00  Valid at 2018-10-20T20:00:00  Valid at 2018-10-21T02:00:00  Valid at 2018-10-21T08:00:00  Valid at 2018-10-21T14:00:00  Valid at 2018-10-21T20:00:00  Valid at 2018-10-22T02:00:00  Valid at 2018-10-22T08:00:00  Valid at 2018-10-22T14:00:00  Valid at 2018-10-22T20:00:00  Valid at 2018-10-23T02:00:00  Valid at 2018-10-23T08:00:00  Valid at 2018-10-23T14:00:00</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="windSpeedType" name="windSpeed" minOccurs="0"/>
+      <xs:element type="temperatureType" name="temperature" minOccurs="0"/>
+      <xs:element type="pressureType" name="pressure" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="from" use="optional"/>
+    <xs:attribute type="xs:string" name="to" use="optional"/>
+    <xs:attribute type="xs:string" name="period" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="textType">
+    <xs:sequence>
+      <xs:element type="locationType" name="location"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="forecastType">
+    <xs:sequence>
+      <xs:element type="textType" name="text"/>
+      <xs:element type="tabularType" name="tabular"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observationsType">
+    <xs:sequence>
+      <xs:element type="weatherstationType" name="weatherstation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="creditType">
+    <xs:sequence>
+      <xs:element type="linkType" name="link">
+        <xs:annotation>
+          <xs:documentation>For å bruke gratis værdata frå Yr, MÅ du vise følgjende tekst godt synleg på nettsida di. Teksten skal vere ei lenke til URL-en som er spesifisert.Les meir om vilkår for bruk av gratis vêrdata + retningsliner på
+http://om.yr.no/verdata/</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="symbolType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="number" use="optional"/>
+        <xs:attribute type="xs:string" name="numberEx" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="var" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="sunType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="rise"/>
+        <xs:attribute type="xs:string" name="set"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="windDirectionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="deg" use="optional"/>
+        <xs:attribute type="xs:string" name="code" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="time" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="weatherstationType">
+    <xs:sequence>
+      <xs:element type="temperatureType" name="temperature"/>
+      <xs:element type="windDirectionType" name="windDirection"/>
+      <xs:element type="windSpeedType" name="windSpeed"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="stno"/>
+    <xs:attribute type="xs:string" name="sttype"/>
+    <xs:attribute type="xs:string" name="name"/>
+    <xs:attribute type="xs:string" name="distance"/>
+    <xs:attribute type="xs:string" name="lat"/>
+    <xs:attribute type="xs:string" name="lon"/>
+    <xs:attribute type="xs:string" name="source"/>
+  </xs:complexType>
+  <xs:complexType name="tabularType">
+    <xs:sequence>
+      <xs:element type="timeType" name="time" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timezoneType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute type="xs:string" name="utcoffsetMinutes"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="precipitationType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="value" use="optional"/>
+        <xs:attribute type="xs:string" name="minvalue" use="optional"/>
+        <xs:attribute type="xs:string" name="maxvalue" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="pressureType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="unit" use="optional"/>
+        <xs:attribute type="xs:string" name="value" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="metaType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="lastupdate"/>
+      <xs:element type="xs:string" name="nextupdate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="linkType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="text" use="optional"/>
+        <xs:attribute type="xs:string" name="url" use="optional"/>
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="weatherdataType">
+    <xs:sequence>
+      <xs:element type="locationType" name="location"/>
+      <xs:element type="creditType" name="credit"/>
+      <xs:element type="linksType" name="links"/>
+      <xs:element type="metaType" name="meta"/>
+      <xs:element type="sunType" name="sun"/>
+      <xs:element type="forecastType" name="forecast"/>
+      <xs:element type="observationsType" name="observations"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="windSpeedType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="mps" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="time" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
